@@ -1,8 +1,20 @@
 pluginManagement {
     repositories {
-        maven("https://maven.fabricmc.net/")
-        maven("https://repo.legacyfabric.net/repository/legacyfabric/")
+        mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.fabricmc.net")
+        maven("https://maven.architectury.dev/")
+        maven("https://maven.minecraftforge.net/")
+        maven("https://repo.spongepowered.org/maven/")
+        maven("https://repo.sk1er.club/repository/maven-releases/")
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "gg.essential.loom" -> useModule("gg.essential:architectury-loom:${requested.version}")
+            }
+        }
     }
 }
 

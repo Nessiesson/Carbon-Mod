@@ -1,6 +1,5 @@
 package me.jellysquid.mods.sodium.mixin.features.chunk_rendering;
 
-import com.llamalad7.mixinextras.sugar.Local;
 import me.jellysquid.mods.sodium.client.SodiumClientMod;
 import me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer;
 import net.minecraft.client.Minecraft;

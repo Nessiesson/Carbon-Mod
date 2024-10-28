@@ -14,7 +14,6 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeColorHelper;
@@ -418,6 +417,11 @@ public class WorldSlice implements SodiumBlockAccess {
         return this.worldType;
     }
 
+    @Override
+    public boolean isSideSolid(final BlockPos pos, final EnumFacing direction, final boolean bl) {
+        return this.getBlockState(pos).getBlock().isSideSolid(this, pos, direction);
+    }
+
     /**
      * Gets or computes the biome at the given global coordinates.
      */
@@ -447,12 +451,17 @@ public class WorldSlice implements SodiumBlockAccess {
     }
 
     public static float diffuseLight(EnumFacing side) {
-        return switch (side) {
-            case DOWN -> 0.5F;
-            case UP -> 1.0F;
-            case NORTH, SOUTH -> 0.8F;
-            default -> 0.6F;
-        };
+	    switch (side) {
+		    case DOWN:
+			    return 0.5F;
+		    case UP:
+			    return 1.0F;
+		    case NORTH:
+		    case SOUTH:
+			    return 0.8F;
+		    default:
+			    return 0.6F;
+	    }
     }
 
     // [VanillaCopy] PalettedContainer#toIndex

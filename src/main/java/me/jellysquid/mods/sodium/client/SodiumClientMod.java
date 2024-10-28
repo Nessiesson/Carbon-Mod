@@ -1,12 +1,11 @@
 package me.jellysquid.mods.sodium.client;
 
 import me.jellysquid.mods.sodium.client.gui.SodiumGameOptions;
-import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.Minecraft;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SodiumClientMod implements ClientModInitializer {
+public class SodiumClientMod {
 
     public static final String MODID = "vintagium";
     public static final String MODNAME = "Vintagium";
@@ -43,8 +42,8 @@ public class SodiumClientMod implements ClientModInitializer {
         return options().advanced.allowDirectMemoryAccess;
     }
 
-    @Override
+/*    @Override
     public void onInitializeClient() {
         // stub
-    }
+    }*/
 }

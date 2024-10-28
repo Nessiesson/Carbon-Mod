@@ -57,6 +57,11 @@ public class WorldSliceLocal implements SodiumBlockAccess {
         return view.getWorldType();
     }
 
+    @Override
+    public boolean isSideSolid(final BlockPos blockPos, final EnumFacing enumFacing, final boolean bl) {
+        return view.isSideSolid(blockPos, enumFacing, bl);
+    }
+
 
     @Override
     public int getBlockTint(BlockPos pos, BiomeColorHelper.ColorResolver resolver) {return view.getBlockTint(pos, resolver);}

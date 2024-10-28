@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "carbon",
+        "name": "Carbon",
+        "description": "An advanced optimization mod for 1.8.9",
+        "version": "${version}",
+        "mcversion": "1.8.9",
+        "url": "",
+        "updateUrl": "",
+        "authorList": [],
+        "credits": "",
+        "logoFile": "assets/sodium/icon.png",
+        "screenshots": [],
+        "dependencies": []
+    }
+]

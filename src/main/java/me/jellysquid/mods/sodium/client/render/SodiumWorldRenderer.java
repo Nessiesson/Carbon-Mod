@@ -348,45 +348,45 @@ public class SodiumWorldRenderer implements ChunkStatusListener {
         GlStateManager.popMatrix();
     }
 
-//    public void renderTileEntities(float partialTicks, Map<Integer, DestroyBlockProgress> damagedBlocks) {
-//        int pass = 0;
-////        TileEntityRendererDispatcher.instance.preDrawBatch();
-//        for (TileEntity tileEntity : this.chunkRenderManager.getVisibleBlockEntities()) {
-//            renderTE(tileEntity, pass, partialTicks, -1);
-//        }
-//
-//        for (TileEntity tileEntity : this.globalBlockEntities) {
-//            renderTE(tileEntity, pass, partialTicks, -1);
-//        }
-////        TileEntityRendererDispatcher.instance.drawBatch(pass);
-//
-//        this.preRenderDamagedBlocks();
-//        for (DestroyBlockProgress destroyProgress : damagedBlocks.values()) {
-//            BlockPos pos = destroyProgress.getPosition();
-//
-//            if (this.world.getBlockState(pos).getBlock().hasTileEntity()) {
-//                TileEntity tileEntity = this.world.getTileEntity(pos);
-//
-//                if (tileEntity instanceof TileEntityChest) {
-//                    TileEntityChest chest = (TileEntityChest) tileEntity;
-//
-//                    if (chest.adjacentChestXNeg != null) {
-//                        pos = pos.offset(EnumFacing.WEST);
-//                        tileEntity = this.world.getTileEntity(pos);
-//                    } else if (chest.adjacentChestZNeg != null) {
-//                        pos = pos.offset(EnumFacing.NORTH);
-//                        tileEntity = this.world.getTileEntity(pos);
-//                    }
-//                }
-//
+    public void renderTileEntities(float partialTicks, Map<Integer, DestroyBlockProgress> damagedBlocks) {
+        int pass = 0;
+        TileEntityRendererDispatcher.instance.preDrawBatch();
+        for (TileEntity tileEntity : this.chunkRenderManager.getVisibleBlockEntities()) {
+            renderTE(tileEntity, pass, partialTicks, -1);
+        }
+
+        for (TileEntity tileEntity : this.globalBlockEntities) {
+            renderTE(tileEntity, pass, partialTicks, -1);
+        }
+        TileEntityRendererDispatcher.instance.drawBatch(pass);
+
+        this.preRenderDamagedBlocks();
+        for (DestroyBlockProgress destroyProgress : damagedBlocks.values()) {
+            BlockPos pos = destroyProgress.getPosition();
+
+            if (this.world.getBlockState(pos).getBlock().hasTileEntity()) {
+                TileEntity tileEntity = this.world.getTileEntity(pos);
+
+                if (tileEntity instanceof TileEntityChest) {
+                    TileEntityChest chest = (TileEntityChest) tileEntity;
+
+                    if (chest.adjacentChestXNeg != null) {
+                        pos = pos.offset(EnumFacing.WEST);
+                        tileEntity = this.world.getTileEntity(pos);
+                    } else if (chest.adjacentChestZNeg != null) {
+                        pos = pos.offset(EnumFacing.NORTH);
+                        tileEntity = this.world.getTileEntity(pos);
+                    }
+                }
+
 //                IBlockState state = this.world.getBlockState(pos);
 //                if (tileEntity != null && state.hasCustomBreakingProgress()) {
 //                    renderTE(tileEntity, pass, partialTicks, destroyProgress.getPartialBlockDamage());
 //                }
-//            }
-//        }
-//        this.postRenderDamagedBlocks();
-//    }
+            }
+        }
+        this.postRenderDamagedBlocks();
+    }
 
     @Override
     public void onChunkAdded(int x, int z) {

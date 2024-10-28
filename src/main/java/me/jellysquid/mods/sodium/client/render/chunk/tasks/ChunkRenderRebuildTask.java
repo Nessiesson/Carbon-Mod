@@ -31,6 +31,7 @@ import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldType;
+import net.minecraftforge.client.ForgeHooksClient;
 
 /**
  * Rebuilds all the meshes of a chunk for each given render pass with non-occluded blocks. The result is then uploaded
@@ -116,7 +117,7 @@ public class ChunkRenderRebuildTask<T extends ChunkGraphicsState> extends ChunkR
                                     continue;
                                 }
 
-//                                ForgeHooksClient.setRenderLayer(layer);
+                                ForgeHooksClient.setRenderLayer(layer);
 
                                 if (BlockRenderType.isModel(renderType) && WorldUtil.toFluidBlock(block) == null) {
                                     IBakedModel model = cache.getBlockModels()
@@ -165,7 +166,7 @@ public class ChunkRenderRebuildTask<T extends ChunkGraphicsState> extends ChunkR
         }
 
         
-//        ForgeHooksClient.setRenderLayer(null);
+        ForgeHooksClient.setRenderLayer(null);
 
         render.setRebuildForTranslucents(false);
         for (BlockRenderPass pass : BlockRenderPass.VALUES) {

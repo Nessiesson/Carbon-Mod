@@ -1,6 +1,5 @@
 package me.jellysquid.mods.sodium.mixin.features.particle_cull;
 
-import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import me.jellysquid.mods.sodium.client.SodiumClientMod;
 import me.jellysquid.mods.sodium.client.render.SodiumWorldRenderer;
 import net.minecraft.client.particle.EffectRenderer;
@@ -31,7 +30,7 @@ public class MixinEffectRenderer {
         }
     }
 
-    @WrapWithCondition(method = {"renderParticles", "renderLitParticles"},
+/*    @WrapWithCondition(method = {"renderParticles", "renderLitParticles"},
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/particle/EntityFX;renderParticle(Lnet/minecraft/client/renderer/WorldRenderer;Lnet/minecraft/entity/Entity;FFFFFF)V"))
     private boolean filterParticleList(EntityFX particle, WorldRenderer f8, Entity f9, float f10, float f11, float f12, float vec3d, float v, float buffer) {
         if(this.cullingFrustum == null) {
@@ -42,5 +41,5 @@ public class MixinEffectRenderer {
 
         // Hack: Grow the particle's bounding box in order to work around mis-behaved particles
         return this.cullingFrustum.isBoxInFrustum(box.minX - 1.0D, box.minY - 1.0D, box.minZ - 1.0D, box.maxX + 1.0D, box.maxY + 1.0D, box.maxZ + 1.0D);
-    }
+    }*/
 }
